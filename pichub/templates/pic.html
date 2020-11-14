@@ -1,5 +1,9 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 
 {% block content %}
-{% block super %}
+{{ block.super }}
+{% for image in image%}
+<img src="{{image.image.url}}" alt="">
+{% endfor %}
+
 {% endblock %}
