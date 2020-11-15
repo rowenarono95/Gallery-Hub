@@ -14,6 +14,10 @@ class Image(models.Model):
     image = CloudinaryField('image')
 
 
+    def delete_image(self):
+        self.save()
+
+
     @classmethod
     def search_by_category(cls, image_category):
         images = cls.objects.filter(image_category__category_name__icontains=image_category)
@@ -33,12 +37,20 @@ class Location(models.Model):
         return self.location_name
 
 
+    def delete_location_name(self):
+        self.delete()    
+
+
 class Category(models.Model):
     category_name = models.CharField(max_length = 30) 
 
     
     def __str__(self):
-        return self.category_name   
+        return self.category_name  
+
+
+    def delete_category_name(self):
+        self.delete()         
 
 
 def update_image(self, Name=None, category=None):
