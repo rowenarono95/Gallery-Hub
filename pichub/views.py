@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http  import HttpResponse
-from .models import Image
+from .models import Image,Category
 
 
 # Create your views here.
@@ -17,7 +17,7 @@ def search_results(request):
         searched_images = Image.search_by_category(category)
         message = f"{category}"
         print(searched_images)
-        return render(request, 'pic/search_results.html', {"message": message, "images": searched_images})
+        return render(request, 'pic/search.html', {"message": message, "images": searched_images})
     else:
         message = "Sorry! You haven't searched for any image"
         return render(request, 'pic/search_results.html', {"message": message})        
