@@ -13,6 +13,13 @@ class Image(models.Model):
     image_category = models.ForeignKey('Category', on_delete=models.CASCADE, default='')
     image = CloudinaryField('image')
 
+
+    @classmethod
+    def search_by_category(cls, image_category):
+        images = cls.objects.filter(image_category__category_name__icontains=image_category)
+        return images
+
+
     def save_image(self):
         self.save()
 
@@ -33,7 +40,4 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name   
 
-    @classmethod
-    def search_by_category(cls,search_term):
-        image = cls.objects.filter(name__icontains = search_term)
-        return image
+    
