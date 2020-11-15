@@ -1,4 +1,4 @@
-<!-- {%extends 'base.html'%} 
+{%extends 'all-news/base.html'%} 
 {% block content %}
 <div class="container">
 
@@ -22,21 +22,5 @@
   {% endif %}
   </div>
 </div>
-{% endblock %} -->
+{% endblock %}
 
-{% extends 'base.html' %}
-{% block content %}
-<div class="container">
-
-    <div class='row'>
-        {% if image %}
-
-        <h2 class="jumbotron text-center " style="font-family: 'Patrick Hand', cursive;"><strong>Found {{photo|length}}
-                of searched term {{message}}</strong> </h2>
-        {%else%}
-        <h2 class="jumbotron text-center" style="font-family: 'Patrick Hand', cursive;"><strong>Found 0 photos for the
-                search term {{message}}</strong> </h2>
-
-        {%endif%}
-
-    </div>
