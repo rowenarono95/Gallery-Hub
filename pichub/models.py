@@ -32,3 +32,8 @@ class Category(models.Model):
     
     def __str__(self):
         return self.category_name   
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        image = cls.objects.filter(name__icontains = search_term)
+        return image

@@ -12,12 +12,12 @@ def image(request):
 
 
 def search_results(request):
-    if 'imagesearch' in request.GET and request.GET["imagesearch"]:
-        category = request.GET.get("imagesearch")
-        searched_images = Image.search_by_category(category)
+    if 'searchimage' in request.GET and request.GET["searchimage"]:
+        category = request.GET.get("searchimage")
+        searched_images = Image(category)
         message = f"{category}"
         print(searched_images)
-        return render(request, 'pic/search.html', {"message": message, "images": searched_images})
+        return render(request, 'search.html', {"message": message, "images": searched_images})
     else:
         message = "Sorry! You haven't searched for any image"
-        return render(request, 'pic/search_results.html', {"message": message})        
+        return render(request, 'search.html', {"message": message})        
