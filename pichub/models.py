@@ -40,8 +40,8 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name   
 
-    
+
 def update_image(self, Name=None, category=None):
         self.name = Name if Name else self.Name
-        self.photo_category = category if category else self.photo_category 
+        self.image_category = category if category else self.image_category 
         self.save()
