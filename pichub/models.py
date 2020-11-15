@@ -41,3 +41,7 @@ class Category(models.Model):
         return self.category_name   
 
     
+def update_image(self, Name=None, category=None):
+        self.name = Name if Name else self.Name
+        self.photo_category = category if category else self.photo_category 
+        self.save()
