@@ -2,12 +2,13 @@
 from __future__ import unicode_literals
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse
-from .models import Image,Category
+from .models import Image,Category,Location
 
 
 # Create your views here.
 def image(request):
     image = Image.objects.all()
+    image_location = Location.objects.all()
     return render(request, 'pic.html', {'image': image})
 
 
@@ -20,4 +21,10 @@ def search_results(request):
         return render(request, 'search.html', {"message": message, "images": searched_images})
     else:
         message = "Sorry! You haven't searched for any image"
-        return render(request, 'search.html', {"message": message})        
+        return render(request, 'search.html', {"message": message})
+
+
+def image_location(request, location):
+    images_by_location = Image.filter_by_location(location)
+    print(images)
+    return render(request, 'location.html', {'images_location': images_by_location})                
